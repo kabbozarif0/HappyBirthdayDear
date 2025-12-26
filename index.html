@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday ❤️</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(#ffdde1, #ee9ca7);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  display: none;
+  padding: 20px;
+}
+
+.page.active {
+  display: block;
+}
+
+.main-pic {
+  width: 220px;
+  border-radius: 15px;
+  margin: 15px 0;
+}
+
+.decor img {
+  width: 60px;
+  margin: 10px;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  background: #ff4d6d;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #e63950;
+}
+
+.song-layout {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.song-layout img {
+  width: 120px;
+  border-radius: 15px;
+}
+
+.text {
+  font-size: 18px;
+  margin: 20px;
+}
+
+#song span {
+  display: block;
+  opacity: 0.3;
+  font-size: 18px;
+  transition: opacity 0.5s;
+}
+
+#song span.active-line {
+  opacity: 1;
+  color: #ff1e56;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active">
+  <h1>🎉 Happy Birthday My Love 🎉</h1>
+  <img src="her1.jpg" class="main-pic">
+  <div class="decor">
+    <img src="balloon.png">
+    <img src="cake.png">
+  </div>
+  <button onclick="nextPage()">Next ➡️</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <h1>No way you turned <span class="age">17</span> today 😭❤️</h1>
+  <p>Born on: <b>27 December 2008</b></p>
+  <img src="her2.jpg" class="main-pic">
+  <div class="decor">
+    <img src="balloon.png">
+    <img src="cake.png">
+  </div>
+  <button onclick="nextPage()">Next ➡️</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <h1>🎵 Happy Birthday To You 🎵</h1>
+
+  <div class="song-layout">
+    <img src="her3.jpg">
+
+    <p id="song">
+      <span>Happy birthday to you</span>
+      <span>Happy birthday to you</span>
+      <span>Happy birthday dear love ❤️</span>
+      <span>Happy birthday to you 🎉</span>
+    </p>
+
+    <img src="her3.jpg">
+  </div>
+
+  <button onclick="nextPage()">Next ➡️</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <h1>My Wish For You 💖</h1>
+  <img src="her4.jpg" class="main-pic">
+  <p class="text">
+    May your life be full of happiness, success, love and laughter.
+    I wish I could be there holding your hand today.
+  </p>
+  <button onclick="nextPage()">Next ➡️</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <h1>My Regards 🌹</h1>
+  <img src="her5.jpg" class="main-pic">
+  <p class="text">
+    Always stay the way you are.
+    No matter where life takes us, you’ll always be special to me.
+    I will always be with you.
+  </p>
+  <h2>— Yours Kabbo ❤️</h2>
+</div>
+
+<script>
+let currentPage = 0;
+const pages = document.querySelectorAll(".page");
+
+function nextPage() {
+  pages[currentPage].classList.remove("active");
+  currentPage++;
+
+  if (currentPage < pages.length) {
+    pages[currentPage].classList.add("active");
+
+    if (currentPage === 2) {
+      singSong();
+    }
+  }
+}
+
+function singSong() {
+  const lines = document.querySelectorAll("#song span");
+  let i = 0;
+
+  const interval = setInterval(() => {
+    lines.forEach(line => line.classList.remove("active-line"));
+
+    if (i < lines.length) {
+      lines[i].classList.add("active-line");
+      i++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 1200);
+}
+</script>
+
+</body>
+</html>
